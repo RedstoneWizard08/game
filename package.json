@@ -1,0 +1,9 @@
+{
+  "name": "game-devserver",
+  "scripts": {
+    "start": "serve -p 4000 -c serve.json"
+  },
+  "devDependencies": {
+    "serve": "^14.1.2"
+  }
+}

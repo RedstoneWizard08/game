@@ -1,0 +1,14 @@
+[submodule "external/sdl"]
+	path = external/sdl
+	url = https://github.com/libsdl-org/SDL
+	ignore = all
+
+[submodule "external/imgui"]
+	path = external/imgui
+	url = https://github.com/ocornut/imgui
+	ignore = all
+
+[submodule "external/stb"]
+	path = external/stb
+	url = https://github.com/nothings/stb
+	ignore = all

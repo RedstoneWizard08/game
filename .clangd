@@ -1,0 +1,6 @@
+CompileFlags:
+    Add:
+        - "-I/usr/share/emscripten/system/include/"
+        - "-D__EMSCRIPTEN__"
+        - "-I./external/stb/"
+        - "-I./external/"
