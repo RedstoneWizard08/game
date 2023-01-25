@@ -14,5 +14,13 @@
 using namespace std;
 
 int main() {
+    printf("Initializing game...");
+
+    Game game;
+
+    printf("Starting loop...");
+
+    game.Run();
+
     return 0;
 }

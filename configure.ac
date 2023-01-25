@@ -30,10 +30,8 @@ AM_PATH_SDL2(
     AC_MSG_ERROR([*** SDL2 version $SDL2_VERSION not found!])
 )
 
-COMMON_FLAGS="-std=c++11 -MMD -MP -isystem . -O2 -lGL -lglfw3 -lSDL2_image"
-
-WASM_FLAGS="-s USE_SDL=2 -s USE_SDL_IMAGE=2 -s FULL_ES2=1 -s WASM=1 -s USE_PTHREADS=1 \
-    -s PTHREAD_POOL_SIZE=4 -s ASSERTIONS=1 -fwasm-exceptions -flto"
+COMMON_FLAGS="-std=c++11 -MMD -MP -isystem . -O2 -lGL -lglfw3 -lSDL2_image -static -g -ggdb -g3 -ggdb3"
+WASM_FLAGS="-s USE_SDL=2 -s USE_SDL_IMAGE=2 -s FULL_ES2=1 -s WASM=1"
 
 IMGUI_FLAGS='-I$(top_srcdir)/external/imgui/ -I$(top_srcdir)/external/imgui/backends/'
 STB_FLAGS='-I$(top_srcdir)/external/stb/ -I$(top_srcdir)/external/'

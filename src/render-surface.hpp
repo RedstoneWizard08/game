@@ -17,7 +17,7 @@ class RenderSurface : public IRenderLayer {
     virtual void Render(SDL_Window* window, bool reset);
 
   protected:
-    std::unique_ptr<RenderSurfaceImpl> self;
+    RenderSurfaceImpl* self;
 };
 
 #endif

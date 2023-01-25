@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdio>
 #ifndef __GLWRAPPERS_CPP
 #define __GLWRAPPERS_CPP
 
@@ -13,14 +14,25 @@ void GLERRORS(const char* label) {
         if (err == GL_NO_ERROR) {
             break;
         }
-        std::cerr << label << " glGetError returned " << err << std::endl;
+        
+        char* err;
+
+        sprintf(err, "%s glGetError returned %s\n", label, err);
+
+        perror(err);
     }
 #endif
 }
 
 void FAIL(const char* label) {
     GLERRORS(label);
-    std::cerr << label << " failed : " << SDL_GetError() << std::endl;
+
+    char* err;
+
+    sprintf(err, "%s failed : %s\n", label, SDL_GetError());
+
+    perror(err);
+
     exit(EXIT_FAILURE);
 }
 
@@ -33,9 +45,11 @@ SDL_Surface* CreateRGBASurface(int width, int height) {
                               0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000
 #endif
         );
+
     if (surface == nullptr) {
         FAIL("SDL_CreateRGBSurface");
     }
+
     return surface;
 }
 

@@ -22,9 +22,9 @@ struct Attributes {
 struct RenderSpritesImpl {
     Atlas atlas;
 
-    std::vector<Sprite> sprites;
-    std::vector<Attributes> vertices;
-    std::vector<GLushort> indices;
+    vector<Sprite> sprites;
+    vector<Attributes> vertices;
+    vector<GLushort> indices;
 
     ShaderProgram shader;
     Texture texture;
@@ -96,7 +96,7 @@ namespace {
 static const GLushort corner_index[6] = {0, 1, 2, 2, 1, 3};
 }
 
-void RenderSprites::SetSprites(const std::vector<Sprite>& sprites) {
+void RenderSprites::SetSprites(const vector<Sprite>& sprites) {
     auto& vertices = self->vertices;
     auto& indices = self->indices;
 
@@ -168,7 +168,7 @@ void RenderSprites::Render(SDL_Window* window, bool reset) {
 
     SDL_GL_GetDrawableSize(window, &sdl_window_width, &sdl_window_height);
 
-    float sdl_window_size = std::min(sdl_window_height, sdl_window_width);
+    float sdl_window_size = min(sdl_window_height, sdl_window_width);
 
     GLfloat u_camera_scale[2] = {sdl_window_size / sdl_window_width,
                                  -sdl_window_size / sdl_window_height};

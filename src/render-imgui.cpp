@@ -42,6 +42,7 @@ void Wrap_SDL_SetClipboardText(void*, const char* s) {
 
 RenderImGui::RenderImGui() : self(new RenderImGuiImpl) {
     ImGuiIO& io = ImGui::GetIO();
+
     io.KeyMap[ImGuiKey_Tab] = SDLK_TAB;
     io.KeyMap[ImGuiKey_LeftArrow] = SDL_SCANCODE_LEFT;
     io.KeyMap[ImGuiKey_RightArrow] = SDL_SCANCODE_RIGHT;
@@ -61,6 +62,7 @@ RenderImGui::RenderImGui() : self(new RenderImGuiImpl) {
     io.KeyMap[ImGuiKey_X] = SDLK_x;
     io.KeyMap[ImGuiKey_Y] = SDLK_y;
     io.KeyMap[ImGuiKey_Z] = SDLK_z;
+
     io.SetClipboardTextFn = Wrap_SDL_SetClipboardText;
     io.GetClipboardTextFn = Wrap_SDL_GetClipboardText;
 }
@@ -105,11 +107,19 @@ RenderImGuiImpl::RenderImGuiImpl()
     loc_a_rgba = glGetAttribLocation(shader.id, "a_rgba");
 
     ImGuiIO& io = ImGui::GetIO();
+
+    void* a;
+
+    io.Fonts->AddFontFromMemoryTTF(a, 1, 15.0);
     io.Fonts->AddFontFromFileTTF("imgui/misc/fonts/DroidSans.ttf", 15.0);
+
     unsigned char* pixels;
     int width, height;
+
     io.Fonts->GetTexDataAsRGBA32(&pixels, &width, &height);
+
     font_texture.CopyFromPixels(width, height, GL_RGBA, pixels);
+
     io.Fonts->TexID = (void*)(intptr_t)font_texture.id;
     io.Fonts->ClearInputData();
     io.Fonts->ClearTexData();
@@ -119,9 +129,12 @@ RenderImGuiImpl::~RenderImGuiImpl() { ImGui::DestroyContext(); }
 
 void RenderImGui::Render(SDL_Window* window, bool reset) {
     ImGuiIO& io = ImGui::GetIO();
+
     int width, height, fb_width, fb_height;
+
     SDL_GetWindowSize(window, &width, &height);
     SDL_GL_GetDrawableSize(window, &fb_width, &fb_height);
+
     io.DisplaySize.x = width;
     io.DisplaySize.y = height;
     io.DisplayFramebufferScale.x = float(fb_width) / width;
@@ -168,13 +181,17 @@ void RenderImGui::Render(SDL_Window* window, bool reset) {
     ImGui::PopStyleColor();
 
     int chat_window_width = 500, chat_window_height = 200;
-    static std::vector<std::string> chat_lines{"Welcome to chat"};
+    
+    static vector<string> chat_lines{"Welcome to chat"};
+    
     static bool scroll_to_bottom = false;
+    
     ImGui::SetNextWindowPos(ImVec2(0, io.DisplaySize.y - chat_window_height));
     ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 
     ImGuiStyle& style = ImGui::GetStyle();
     style.WindowRounding = 0.0;
+
     style.Colors[ImGuiCol_TitleBg] = ImColor::HSV(0, 0.5f, 0.5f);
     style.Colors[ImGuiCol_TitleBgActive] = ImColor::HSV(0, 0.7f, 0.5f);
     style.Colors[ImGuiCol_TitleBgCollapsed] = ImColor::HSV(0, 0.3f, 0.5f);

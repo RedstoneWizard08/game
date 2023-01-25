@@ -3,11 +3,6 @@
 #ifndef __APP_HPP
 #define __APP_HPP
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string>
-#include <iostream>
-
 #include <SDL2/SDL.h>
 
 #ifdef __EMSCRIPTEN__

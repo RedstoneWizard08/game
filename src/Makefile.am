@@ -12,8 +12,8 @@ libimgui_la_SOURCES = ../external/imgui/imgui.cpp ../external/imgui/imgui_draw.c
     ../external/imgui/imgui_widgets.cpp ../external/imgui/backends/imgui_impl_sdl.cpp \
     ../external/imgui/backends/imgui_impl_opengl3.cpp
 
-libimgui_la_CFLAGS = -fPIC
-libimgui_la_CXXFLAGS = -fPIC
+libimgui_la_CFLAGS = -fPIC -static
+libimgui_la_CXXFLAGS = -fPIC -static
 libimgui_la_LDFLAGS = -version-info 1:89:0
 
 game_LDADD = libimgui.la

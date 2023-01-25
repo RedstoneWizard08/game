@@ -15,7 +15,7 @@ struct Triangle {
 };
 
 struct Shape {
-    std::vector<Triangle> triangles;
+    vector<Triangle> triangles;
     float r, g, b, a;
 };
 
@@ -25,10 +25,10 @@ class RenderShapes : public IRenderLayer {
     ~RenderShapes();
     virtual void Render(SDL_Window* window, bool reset);
 
-    void SetShapes(const std::vector<Shape>& shapes);
+    void SetShapes(const vector<Shape>& shapes);
 
   protected:
-    std::unique_ptr<RenderShapesImpl> self;
+    RenderShapesImpl* self;
 };
 
 #endif

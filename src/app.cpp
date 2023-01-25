@@ -15,6 +15,16 @@ Triangle tri(float x1, float y1, float x2, float y2, float x3, float y3) {
     return Triangle{{x1, x2, x3}, {y1, y2, y3}};
 }
 
+Game::Game() {
+    printf("Preloading...");
+
+    this->Preload();
+
+    printf("Setting up...");
+
+    this->Setup();
+}
+
 void Game::LoopCallback() {
     SDL_Event event;
 
