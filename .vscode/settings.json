@@ -27,7 +27,11 @@
     "/usr/share/emscripten/system/lib/**",
     "/usr/share/emscripten/system/*",
     "/usr/share/emscripten/system/include/*",
-    "/usr/share/emscripten/system/lib/*"
+    "/usr/share/emscripten/system/lib/*",
+    "external/**",
+    "external/stb/**",
+    "external/imgui/**",
+    "external/imgui/backends/**"
   ],
   "C_Cpp_Runner.includeSearch": [
     "*",

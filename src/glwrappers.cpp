@@ -11,15 +11,16 @@ void GLERRORS(const char* label) {
 #ifndef __EMSCRIPTEN__
     while (true) {
         GLenum err = glGetError();
+
         if (err == GL_NO_ERROR) {
             break;
         }
         
-        char* err;
+        char* erro;
 
-        sprintf(err, "%s glGetError returned %s\n", label, err);
+        sprintf(erro, "%s glGetError returned %s\n", label, err);
 
-        perror(err);
+        perror(erro);
     }
 #endif
 }

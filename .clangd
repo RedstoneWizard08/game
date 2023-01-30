@@ -4,3 +4,4 @@ CompileFlags:
         - "-D__EMSCRIPTEN__"
         - "-I./external/stb/"
         - "-I./external/"
+        - "-I./external/imgui/"
